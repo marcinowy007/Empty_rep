@@ -2,14 +2,15 @@
 
 def szyfruj(tekst):
     try:
-        str(tekst)
+        str(tekst).lower()
+        if isinstance(tekst, str):
+            print("Uwaga podany argument nie jest typu \"string\", ale można go zaszyfrować.")
     except:
         print("Podany argument nie może zostać potraktowany jako tekst.")
     print("Za pomocą jakiego szyfru chcesz szyfrować podany tekst?")
     inp = input("GADERYPOLUKI (G), POLITYKARENU (P), własny szyfr użytkownika (U) \nTu wpisz odpowiednią literę: ").lower()
     if inp == "u":
         szyfr_user = input("Podaj szyfr: ").lower()
-        #sprawdzenie szyfru
         if len(szyfr_user)%2 != 0:
             print("Podany szyfr zawiera niepoprwaną liczbę liter.")
             return
@@ -33,7 +34,7 @@ def szyfruj(tekst):
         print("Nie podano prawidłowej litery")
         return
     wynik = ""
-    tekst = tekst.lower()
+    tekst = str(tekst).lower()
     for znak in tekst:
         try:
             wynik += szyfr[znak]
